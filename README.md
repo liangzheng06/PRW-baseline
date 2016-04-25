@@ -1,11 +1,11 @@
 We provide evaluation code of the PRW dataset in this repository. Please kindly cite the Arxiv paper if you use this dataset.
 
-Liang Zheng*, Hengheng Zhang*, Shaoyan Sun*, Manmohan Chandraker, Qi Tian, "Person Re-identification in the Wild", arXiv:1604.02531, 2016. (* equal contribution)
+Liang Zheng\*, Hengheng Zhang\*, Shaoyan Sun\*, Manmohan Chandraker, Qi Tian, "Person Re-identification in the Wild", arXiv:1604.02531, 2016. (* equal contribution)
 
 This code implements the baseline using DPM as detector and BoW+XQDA as recognizer.
 With the prepared codes, you can obtain some baseline results with 3 steps.
 
-1. Download the PRW dataset, and unzip it in the folder "PRW"
+1. Download the PRW dataset: http://pan.baidu.com/s/1i5tqYbj. Unzip it in the folder "PRW"
 
 2. Run "metric_learning.m" to train the recognition model. 
 
