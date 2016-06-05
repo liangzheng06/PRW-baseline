@@ -62,8 +62,6 @@ for k = 1:length(ID_cam_query)
     tic
     score = dist(:, k);
 
-    ap = cell(length(thresh), 1);
-    cmc = cell(length(thresh), 1);
     for i = 1:length(thresh) % for each detection threshold, we calculate ap and cmc
         thre = thresh(i);
         pos = find(ID_cam_gallery(:, 3) < thre);
