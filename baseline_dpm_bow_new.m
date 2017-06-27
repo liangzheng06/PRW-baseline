@@ -4,6 +4,7 @@
 % paper as
 % Liang Zheng, Hengheng Zhang, Shaoyan Sun, Manmohan Chandraker, Qi Tian,
 % "Person Re-identification in the Wild",  arXiv:1604.02531, 2016.
+
 % adding systems paths, loading detection results, training results
 dpm_test = importdata('data/dpm_test.mat');
 addpath 'utils/LOMO_XQDA/bin'
@@ -61,13 +62,13 @@ for k = 1:length(ID_cam_query)
     score = dist(:, k);
     
     for i = 1:piece_thre% for each detection threshold, we calculate ap and cmc
-        pos = n_gallery(1: (i-1)*thre-1 , :);
+        pos = n_gallery(1: (i-1)*thre-1, :);
         score2 = score;
         score2(pos) = 1000;
         score2(junk_index) = 5000;
         [A, index] = sort(score2, 'ascend');
         index = index(A < 1000);
-        [ap{i}(k), cmc{i}(:, k)] = compute_AP_prw(good_index, index);
+        [ap{i}(k), cmc{i}(:, k)] = compute_AP(good_index, index);
     end
     toc
 end
@@ -79,8 +80,8 @@ r1 = zeros(piece_thre, 1);
 r20 = zeros(piece_thre, 1);
 nwindow = zeros(piece_thre, 1);
 for i = 1: piece_thre
-    pos2 = n_gallery( max((i-1)*thre,1) : end, : );
-    nwindow(i) = length(pos2)/length(test);
+    pos2 = n_gallery(max((i-1)*thre, 1) : end, :);
+    nwindow(i) = length(pos2)/length(dpm_test);
     map(i) = mean(ap{i});
     cmc_avg{i} = mean(cmc{i}, 2);
     r1(i) = cmc_avg{i}(1);
